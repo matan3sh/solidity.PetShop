@@ -14,5 +14,9 @@
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "tar": "^4.4.10"
   }
 }

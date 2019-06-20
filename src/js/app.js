@@ -15,7 +15,6 @@ App = {
         petTemplate.find('.pet-age').text(data[i].age);
         petTemplate.find('.pet-location').text(data[i].location);
         petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
-
         petsRow.append(petTemplate.html());
       }
     });
@@ -38,14 +37,10 @@ App = {
     // will read the compiled file and return as the variable data
     $.getJSON("Adoption.json", function(data){
       var adoptionArtifact = data;
-
       App.contracts.adoption = TruffleContract(adoptionArtifact) //will save the truffle contract inside the contract obj and keep it async with migration
-
       App.contracts.adoption.setProvider(App.web3Provider);
-
       return App.markAdopted(); //in case any pets are already adopted
     });
-
     return App.bindEvents();
   },
 
@@ -54,7 +49,7 @@ App = {
   },
 
   markAdopted: function(adopters, account) {
-    App.contracts.adoption.deplyed().then(function(instance){
+    App.contracts.adoption.deployed().then(function(instance){
       return instance.getAdopters.call(); //give us all the adopters in the smart contract
     }).then(function(adopters){
       for (let i = 0; i < adopters.length; i++) {
@@ -70,15 +65,12 @@ App = {
 
   handleAdopt: function(event) {
     event.preventDefault();
-
     var petId = parseInt($(event.target).data('id'));
-
     // return the accounts that the user have in metamask for instance
     web3.eth.getAccounts(function(error,accounts){
       if(error){
         console.log(error);
       }
-
       App.contracts.adoption.deployed().then(function(instance){
         return instance.adopt.sendTransaction(petId, {from: accounts[0]})
       }).then(function(result){
