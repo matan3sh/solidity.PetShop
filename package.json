@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "node": "12.4.0"
+    "node": "11.9.0"
   },
   "main": "truffle.js",
   "directories": {
