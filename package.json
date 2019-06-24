@@ -2,6 +2,9 @@
   "name": "pet-shop",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "12.4.0"
+  },
   "main": "truffle.js",
   "directories": {
     "test": "test"
