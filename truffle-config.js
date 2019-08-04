@@ -14,7 +14,7 @@ module.exports = {
       port: 8545
     },
     rinkeby: {
-      provider: () => new HDWalletProvider(process.env.MNEMONIC, "http://rinkeby.infura.io/v3/"+process.env.INFURA_API_KEY),
+      provider: () => new HDWalletProvider(process.env.MNEMONIC, "https://rinkeby.infura.io/v3/"+process.env.INFURA_API_KEY),
       network_id: 4
     }
   }
